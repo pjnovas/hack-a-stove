@@ -1,0 +1,20 @@
+/*
+ * Configuration File
+ * Rename me into config.h and set up
+ */
+
+// #define DEBUG // Comment this line to disable USB Serial debug mode
+
+#define SERIAL_BAULRATE            9600
+#define RETRY_MQTT_CONNECT         5000
+
+#define WIFI_HOSTNAME              "IoT-Stove"
+#define WIFI_SSID                  "********"
+#define WIFI_PASSWORD              "********"
+
+#define MQTT_HOST                  "192.168.0.249"
+#define MQTT_PORT                  1883
+#define MQTT_CLIENT_ID             "stove" // base path of the topic, ie. home/living/stove-1 (avoid / as first char)
+
+#define PIN_HEAT_LOW               D5  // For low power of the stove
+#define PIN_HEAT_HIGH              D6  // For high power
