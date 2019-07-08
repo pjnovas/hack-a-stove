@@ -3,6 +3,10 @@
  * Rename me into config.h and set up
  */
 
+// Mosquitto does not support version 3.1.1
+// https://github.com/knolleary/pubsubclient/blob/master/src/PubSubClient.h#L19
+// For 3.1 version (mosquitto) - LIB must be uncomment in that line
+
 // #define DEBUG // Comment this line to disable USB Serial debug mode
 
 #define SERIAL_BAULRATE            9600

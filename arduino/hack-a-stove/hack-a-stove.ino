@@ -25,17 +25,17 @@ void onMessageReceive(char* topic, byte* payload, unsigned int length) {
   
   if (strcmp(topic, (String(clientId) + "/heat").c_str()) == 0) {    
     switch((char)payload[0]){
-      case 'L': 
+      case '0': // OFF
+        digitalWrite(PIN_HEAT_LOW, HIGH);
+        digitalWrite(PIN_HEAT_HIGH, HIGH);
+        break;
+      case '1': // LOW
         digitalWrite(PIN_HEAT_LOW, LOW);
         digitalWrite(PIN_HEAT_HIGH, HIGH);
         break;
-      case 'H':
+      case '2': // HIGH
         digitalWrite(PIN_HEAT_LOW, HIGH);
         digitalWrite(PIN_HEAT_HIGH, LOW);
-        break;
-      case 'O':
-        digitalWrite(PIN_HEAT_LOW, HIGH);
-        digitalWrite(PIN_HEAT_HIGH, HIGH);
         break;
     }
   }
@@ -88,6 +88,10 @@ void connectWIFI() {
 }
 
 void connectMQTT() {
+  #ifdef DEBUG
+    Serial.println("MQTT;TRY");
+  #endif
+  
   if (millis() > lastTry + RETRY_MQTT_CONNECT) {
     lastTry = millis();
     
@@ -111,7 +115,7 @@ void connectMQTT() {
         }
         else {
           #ifdef DEBUG
-            Serial.print("MQTT;TRY;");
+            Serial.print("MQTT;ERR;");
             Serial.println(client.state());
           #endif
         }

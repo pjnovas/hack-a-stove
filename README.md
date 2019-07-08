@@ -19,6 +19,6 @@ This is my attemp to hack my little stove into an IoT device so I can switch it 
 2. Upload hack-a-stove.ino
 3. Set up a MQTT client 
 4. Publish under topic: `stove/heat` on of these:
-    * `L`: Low heater
-    * `H`: High heater
-    * `O`: Switch off heater
+    * `0`: Switch off heater
+    * `1`: Low heater
+    * `2`: High heater
